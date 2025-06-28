@@ -4,14 +4,18 @@ public class Dog{
         DogClass dog2 = new DogClass(30);
         DogClass dog3 = new DogClass(10);
         DogClass dog4 = new DogClass(0);
-        dog1.bark();
-        dog2.bark();
-        dog3.bark();
-        dog4.bark();
+        System.out.println(dog1.bark());
+        System.out.println(dog2.bark());
+        System.out.println(dog3.bark());
+        System.out.println(dog4.bark());
     }
 }
-class DogClass(int weight){
-    int size = weight;
+class DogClass {
+    int size =0;
+    DogClass(int weight){
+        size = weight;
+    }
+    
     
     String bark(){
         if (size > 50){
