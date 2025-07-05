@@ -25,7 +25,7 @@ class Game {
                 System.out.println("You won in " + tries + " tries.");
                 return;
             }
-            System.out.println(guess > target ? "Too high!" : "Too low!");
+            System.out.println(guess > target ? "Too high" : "Too low");
         }
         System.out.println("The number was " + target);
     }
