@@ -6,13 +6,13 @@ public class MusicPlaylist {
             {"s3","a3"},
 
         };
-        for (int i = 0; i < musicPlaylist.length; i++) {
-            for (int j = 0; j < musicPlaylist[i].length; j++) {
-                if(j==0){
-                System.out.print("Song:");
+        for (int i = 0; i < musicPlaylist.length; i++) { // outer loop each slot
+            for (int j = 0; j < musicPlaylist[i].length; j++) { // inner loop for each song and artist of song
+                if(j==0){ // checking to label the values with either song or artist
+                    System.out.print("Song:");
                 }
                 else{
-                System.out.print("Artist:");
+                    System.out.print("Artist:");
                 }
                 System.out.print(musicPlaylist[i][j] + " ");
             }
