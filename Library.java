@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Book {
 
@@ -69,14 +70,16 @@ public class Library{
     public void appendToLibrary(Book book){
         libraryBooks.add(book);
     }
-
+    public void removeFromLibrary(Book book){
+        libraryBooks.remove(book);
+    }
         public static void main(String[] args) {
         Book book1 = new Book("b1", "a1", "g1");
         Book book2 = new Book("b2", "a2", "g2");
         Book book3 = new Book("b3", "a3", "g3");
         
         
-
+        Scanner sc = new Scanner(System.in);
         
         Library plainsboroLibrary = new Library();
         plainsboroLibrary.printLibInfp();
@@ -84,6 +87,16 @@ public class Library{
         plainsboroLibrary.appendToLibrary(book2);
         plainsboroLibrary.appendToLibrary(book3);
         plainsboroLibrary.printLibInfp();
+        plainsboroLibrary.removeFromLibrary(book2);
+        plainsboroLibrary.printLibInfp();
+        String in = sc.nextLine();
+        for(int i = 0; i < plainsboroLibrary.libraryBooks.size(); i++){
+            Book x = plainsboroLibrary.libraryBooks.get(i);
+            if(x.getTitle().equalsIgnoreCase(in)){
+                System.out.println(x);
+            }
+
+        }
 
     }
     
