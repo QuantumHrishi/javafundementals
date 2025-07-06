@@ -75,8 +75,8 @@ public class Library{
     }
         public static void main(String[] args) {
         Book book1 = new Book("b1", "a1", "g1");
-        Book book2 = new Book("b2", "a2", "g2");
-        Book book3 = new Book("b3", "a3", "g3");
+        Book book2 = new EBook("b2", "a2", "g2");
+        Book book3 = new EBook("b3", "a3", "g3");
         
         
         Scanner sc = new Scanner(System.in);
@@ -96,7 +96,9 @@ public class Library{
                 System.out.println(x);
             }
 
+
         }
+        System.out.println("nothing (else) for what you searched");
 
     }
     
