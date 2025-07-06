@@ -1,30 +1,55 @@
 import java.util.*;
 
 class GameLogic {
-    int[] shipRows = new int[3];
-    int[] shipCols = new int[3];
-    boolean[] shipHits = new boolean[3];
+    char[][] board = new char[5][5];
+    int shipCount = 3;
     
     GameLogic() {
+        // Initialize board
+        for(int i = 0; i < 5; i++) {
+            for(int j = 0; j < 5; j++) {
+                board[i][j] = '0';
+            }
+        }
+        
+        // place ships randomly
         Random rand = new Random();
-        for(int i = 0; i < 3; i++) {
-            shipRows[i] = rand.nextInt(5);
-            shipCols[i] = rand.nextInt(5);
+        int placed = 0;
+        while(placed < shipCount) {
+            int row = rand.nextInt(5);// ship n row coord
+            int col = rand.nextInt(5);// ship n col coord
+                board[row][col] = '1'; // place ship marker
+                placed++;
+            }
         }
     }
     
     int makeGuess(int row, int col) {
-        for(int i = 0; i < 3; i++) {
-            if(row == shipRows[i] && col == shipCols[i] && !shipHits[i]) {
-                shipHits[i] = true;
-                return 1; // hit
-            }
+        if(board[row][col] == '1') {
+            board[row][col] = '1'; // hit
+            shipCount--;
+            return 1;
+        } else if(board[row][col] == '0') {
+            board[row][col] = 'O'; // miss
+            return 0;
         }
-        return 0; // miss
+        return -1; // already guessed
     }
     
     boolean allShipsSunk() {
-        return shipHits[0] && shipHits[1] && shipHits[2];
+        return shipCount == 0;
+    }
+    
+    void printBoard() {
+        System.out.println("  0 1 2 3 4");
+        for(int i = 0; i < 5; i++) {
+            System.out.print(i + " ");
+            for(int j = 0; j < 5; j++) {
+                char display = board[i][j];
+                System.out.print(display + " "); // display whole board to user
+            }
+            System.out.println();
+        }
     }
 }
 
@@ -33,9 +58,8 @@ public class Battleshp {
         GameLogic game = new GameLogic();
         Scanner sc = new Scanner(System.in);
         
-        
-        
         while(true) {
+            game.printBoard();
             System.out.print("Give Row(0-4): ");
             int row = sc.nextInt();
             System.out.print("Give Column(0-4): ");
@@ -44,13 +68,17 @@ public class Battleshp {
             int result = game.makeGuess(row, col);
             if(result == 1) {
                 System.out.println("hit");
+                game.board[row][col] = '0';// stops the user from hitting same place 3 times and getting all sunk result from it
                 if(game.allShipsSunk()) {
-                    System.out.println("sunk all ships, you  win");
+                    game.printBoard();
+                    System.out.println("sunk all, you win");
                     break;
                 }
-            } else {
+            } else if(result == 0) {
                 System.out.println("miss");
-            }
+            } 
+            
         }
+        sc.close();
     }
 }
