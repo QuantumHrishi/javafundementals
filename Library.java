@@ -6,7 +6,7 @@ class Book {
     private String title;
     private String author;
     private String genre;
-    String copyType;
+    String copyType = "default";
 
     
 
@@ -27,7 +27,9 @@ class Book {
     public String getAuthor() {
         return author;
     }
-
+    public String getType() {
+        return copyType;
+    }
     
     
     
@@ -47,7 +49,7 @@ class EBook extends Book{
 
     public EBook(String title, String author, String genre) {
         super(title, author, genre);
-        copyType = "E-Book";
+        copyType = "EBook";
     }
 
 }
@@ -72,6 +74,29 @@ public class Library{
     }
     public void removeFromLibrary(Book book){
         libraryBooks.remove(book);
+        
+    }
+    public ArrayList<Book> searchByTitle(String input){
+        ArrayList<Book> a = new ArrayList<>();
+        for(int i = 0; i < this.libraryBooks.size(); i++){
+            Book x = this.libraryBooks.get(i);
+            if(x.getTitle().equalsIgnoreCase(input)){
+                a.add(x);
+            }
+        }
+        return a;
+
+    }
+    public ArrayList<Book> searchByType(String input){
+        ArrayList<Book> a = new ArrayList<>();
+        for(int i = 0; i < this.libraryBooks.size(); i++){
+            Book x = this.libraryBooks.get(i);
+            if(x.getType().equalsIgnoreCase(input)){
+                a.add(x);
+            }
+        }
+        return a;
+
     }
         public static void main(String[] args) {
         Book book1 = new Book("b1", "a1", "g1");
@@ -90,15 +115,10 @@ public class Library{
         plainsboroLibrary.removeFromLibrary(book2);
         plainsboroLibrary.printLibInfp();
         String in = sc.nextLine();
-        for(int i = 0; i < plainsboroLibrary.libraryBooks.size(); i++){
-            Book x = plainsboroLibrary.libraryBooks.get(i);
-            if(x.getTitle().equalsIgnoreCase(in)){
-                System.out.println(x);
-            }
-
-
-        }
-        System.out.println("nothing (else) for what you searched");
+        System.out.println(plainsboroLibrary.searchByTitle(in));
+        
+        String in1 = sc.nextLine();
+        System.out.println(plainsboroLibrary.searchByType(in1));
 
     }
     
