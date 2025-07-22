@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Book {
+class Bookxx {
 
     private String title;
     private String author;
@@ -10,7 +10,7 @@ class Book {
 
     
 
-    public Book(String title, String author, String genre) {
+    public Bookxx(String title, String author, String genre) {
         this.title = title;
         this.author = author;
         this.genre = genre;
@@ -45,7 +45,7 @@ class Book {
 
 
 
-class EBook extends Book{
+class EBook extends Bookxx{
 
     public EBook(String title, String author, String genre) {
         super(title, author, genre);
@@ -59,20 +59,20 @@ public class Library{
     public Library(){
         
         for(int i = 1; i <=10; i++){
-            Book x = new Book("Book" + i, "author"+ i, "genre" + i);
+            Book x = new Bookxx("Book" + i, "author"+ i, "genre" + i);
             libraryBooks.add(x);
          }
 
     }
     public void printLibInfp() {
-        for(Book b: libraryBooks){
+        for(Bookxx b: libraryBooks){
             b.printBookInfo();
         }
     }
-    public void appendToLibrary(Book book){
+    public void appendToLibrary(Bookxx book){
         libraryBooks.add(book);
     }
-    public void removeFromLibrary(Book book){
+    public void removeFromLibrary(Bookxxx book){
         libraryBooks.remove(book);
         
     }

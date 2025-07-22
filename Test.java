@@ -6,7 +6,8 @@ public class Test {
         Scanner in = new Scanner(System.in);
         int newnum = Integer.parseInt(in.nextLine());
         System.out.println(newnum);
-        
+        int x = (int) 'A';
+        System.out.println(x);
     }
     
 }

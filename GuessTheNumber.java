@@ -3,15 +3,15 @@ import java.util.Scanner;
 
 public class GuessTheNumber {
     public static void main(String[] args) {
-        new Game().play();
+        new Gamex().play();
     }
 }
 
-class Game {
+class Gamex {
     private int target;
     Scanner in;
     
-    public Game() {
+    public Gamex() {
         target = new Random().nextInt(100) + 1;
         in = new Scanner(System.in);
     }
