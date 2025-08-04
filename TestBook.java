@@ -13,7 +13,7 @@ public class TestBook {
     
 
 
-    Collections.sort(bookList,x);
+    bookList.sort((one,two) -> one.getAuthor().compareTo(two.getAuthor())) ;
         
     System.out.println(bookList);
     }
